@@ -1,0 +1,154 @@
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+// Theme colors
+$themeColor1: #8c1c85;
+$themeColor2: #580e59;
+$themeColor3: #f8ebfc;
+$themeColor4: #881ba6;
+$themeColor5: #331e4e;
+$fontColor: white;
+
+// root variables
+:root {
+  --navHeight: 50px;
+}
+
+//
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", DFKai-SB, sans-serif;
+}
+
+body {
+  background: $themeColor5;
+  color: $fontColor;
+  position: relative;
+
+  header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    nav {
+      width: 100%;
+      height: var(--navHeight);
+      background: $themeColor2;
+      box-shadow: 1px 1px 5px black;
+      display: flex;
+      align-items: center;
+
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        right: 1rem;
+        font-size: 2.5rem;
+      }
+
+      div {
+        display: flex;
+        margin-left: 2rem;
+        img {
+          width: 30px;
+          margin-right: 0.5rem;
+        }
+        h1 {
+          color: $fontColor;
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      height: 2rem;
+      position: absolute;
+      bottom: 100%;
+      right: 1rem;
+      transform: translate(0%, 135%);
+      li {
+        list-style: none;
+        // margin: 0rem 1.5rem;
+        padding: 0rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.2s ease;
+
+        a {
+          font-size: 1.1rem;
+          color: $fontColor;
+          text-decoration: none;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: rgb(226, 136, 222);
+          }
+        }
+
+        // &.active:hover {
+        //   transform: translateY(-15%);
+        // }
+      }
+    }
+  }
+
+  main {
+    #Home {
+      border: 1px solid black;
+      width: 100%;
+      height: 100vh;
+      background: #331e4e;
+      color: white;
+    }
+
+    #Projects {
+      border: 1px solid black;
+      width: 100%;
+      height: 25%;
+      background: #331e4e;
+      color: white;
+    }
+
+    #AboutMe {
+      border: 1px solid black;
+      width: 100%;
+      height: 25%;
+      background: #331e4e;
+      color: white;
+    }
+
+    #ContactMe {
+      border: 1px solid black;
+      width: 100%;
+      height: 25%;
+      background: #331e4e;
+      color: white;
+    }
+  }
+}
+
+// RWD nav collaspe
+@media screen and (max-width: 800px) {
+  header {
+    nav {
+      span.material-symbols-outlined {
+        display: block;
+      }
+    }
+
+    ul {
+      width: 100%;
+      flex-direction: column;
+      top: calc(var(--navHeight) * 1.1);
+      left: 0;
+      li {
+        width: 100%;
+        line-height: 2.5rem;
+        background: $themeColor1;
+      }
+    }
+  }
+}
