@@ -84,14 +84,18 @@ addEventListener("resize", () => {
 
 // menu open and close
 let menu = document.querySelector(".material-symbols-outlined");
-menu.addEventListener("click", () => {
+menu.addEventListener("click", navCollaspe);
+
+// nav collaspe on achor click
+navAnchor.querySelectorAll("li").forEach((list) => {
+  list.querySelector("a").addEventListener("click", navCollaspe);
+});
+// nac collaspe function
+function navCollaspe() {
   if (navAnchor.classList.contains("flagCollaspe")) {
     navAnchor.style.display = "flex";
   } else {
     navAnchor.style.display = "none";
   }
   navAnchor.classList.toggle("flagCollaspe");
-  //
-  if (!navAnchor.classList.contains("flagCollaspe")) {
-  }
-});
+}
