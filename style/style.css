@@ -88,6 +88,7 @@ body main #Home .homeLeft {
   flex-grow: 1.6;
   min-width: 380px;
   position: relative;
+  animation: incomingLeft 1.5s ease;
 }
 body main #Home .homeLeft .homeLeftContent {
   width: 90%;
@@ -99,40 +100,44 @@ body main #Home .homeLeft .homeLeftContent {
   transform: translate(-5%, -50%);
 }
 body main #Home .homeLeft .homeLeftContent h1 {
+  display: block;
   font-size: 3rem;
   font-weight: 100;
   letter-spacing: 0.1rem;
-  border: 1px solid black;
 }
 body main #Home .homeLeft .homeLeftContent p {
+  display: block;
   font-size: 1.25rem;
   margin-top: 0.75rem;
-  border: 1px solid black;
 }
-body main #Home .homeLeft .homeLeftContent ul {
-  width: 30%;
-  border: 1px solid black;
-  list-style: none;
+body main #Home .homeLeft .homeLeftContent .downloadCV {
   display: flex;
-  margin-top: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  width: 10rem;
+  height: 2.25rem;
+  background: #c56c86;
+  margin-top: 1.25rem;
+  cursor: pointer;
 }
-body main #Home .homeLeft .homeLeftContent ul li {
-  margin: 0rem 0.25rem;
-}
-body main #Home .homeLeft .homeLeftContent ul li:hover {
+body main #Home .homeLeft .homeLeftContent .downloadCV:hover {
   animation: gelatine 0.5s linear;
 }
-body main #Home .homeLeft .homeLeftContent ul li a {
-  text-decoration: none;
+body main #Home .homeLeft .homeLeftContent .downloadCV a {
   color: white;
+  display: block;
+  text-decoration: none;
+  text-align: center;
 }
-body main #Home .homeLeft .homeLeftContent ul li a .socialIcon {
-  font-size: 1.75rem;
+body main #Home .homeLeft .homeLeftContent .downloadCV .downloadIcon {
+  font-size: 1.5rem;
 }
 body main #Home .homeRight {
   flex-grow: 1;
   min-width: 380px;
   position: relative;
+  animation: incomingRight 1.5s ease;
 }
 body main #Home .homeRight .homeRightContent {
   width: 100%;
@@ -144,6 +149,29 @@ body main #Home .homeRight .homeRightContent {
 }
 body main #Home .homeRight .homeRightContent .myPhoto {
   position: absolute;
+}
+body main #Home .scrollDownContainer {
+  pointer-events: none;
+}
+body main #Home .scrollDownContainer .scrollDown {
+  position: absolute;
+  bottom: -3%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+body main #Home .scrollDownContainer .arrow2 {
+  position: absolute;
+  bottom: 5%;
+  left: 32%;
+}
+body main #Home .scrollDownContainer .arrow1,
+body main #Home .scrollDownContainer .arrow2 {
+  animation: arrowMove 1s linear 0s infinite;
 }
 body main #Projects {
   border: 1px solid black;
@@ -164,6 +192,26 @@ body main #ContactMe {
   color: white;
 }
 
+@keyframes incomingLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes incomingRight {
+  0% {
+    opacity: 0;
+    transform: translateX(5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
 @keyframes gelatine {
   from {
     transform: scale(1, 1);
@@ -181,6 +229,14 @@ body main #ContactMe {
     transform: scale(1, 1);
   }
 }
+@keyframes arrowMove {
+  0% {
+    transform: translateY(-30%) scaleX(3);
+  }
+  100% {
+    transform: translateY(-20%) scaleX(3);
+  }
+}
 @media screen and (max-width: 800px) {
   header nav span.material-symbols-outlined {
     display: block;
@@ -196,10 +252,13 @@ body main #ContactMe {
     line-height: 2.5rem;
     background: #ff7582;
   }
+  .scrollDownContainer {
+    display: none;
+  }
 }
 @media screen and (max-width: 776px) {
   .homeLeft {
-    height: 70vh;
+    height: 0vh;
   }
   .homeRight {
     height: 60vh;

@@ -109,6 +109,7 @@ body {
         flex-grow: 1.6;
         min-width: 380px;
         position: relative;
+        animation: incomingLeft 1.5s ease;
 
         .homeLeftContent {
           width: 90%;
@@ -120,37 +121,40 @@ body {
           transform: translate(-5%, -50%);
 
           h1 {
+            display: block;
             font-size: 3rem;
             font-weight: 100;
             letter-spacing: 0.1rem;
-            border: 1px solid black;
           }
           p {
+            display: block;
             font-size: 1.25rem;
             margin-top: 0.75rem;
-            border: 1px solid black;
           }
 
-          ul {
-            width: 30%;
-            border: 1px solid black;
-            list-style: none;
+          .downloadCV {
             display: flex;
-            margin-top: 0.75rem;
-            li {
-              margin: 0rem 0.25rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            width: 10rem;
+            height: 2.25rem;
+            background: $themeColor2;
+            margin-top: 1.25rem;
+            cursor: pointer;
 
-              &:hover {
-                animation: gelatine 0.5s linear;
-              }
+            &:hover {
+              animation: gelatine 0.5s linear;
+            }
 
-              a {
-                text-decoration: none;
-                color: white;
-                .socialIcon {
-                  font-size: 1.75rem;
-                }
-              }
+            a {
+              color: $fontColor;
+              display: block;
+              text-decoration: none;
+              text-align: center;
+            }
+            .downloadIcon {
+              font-size: 1.5rem;
             }
           }
         }
@@ -159,6 +163,7 @@ body {
         flex-grow: 1;
         min-width: 380px;
         position: relative;
+        animation: incomingRight 1.5s ease;
 
         .homeRightContent {
           width: 100%;
@@ -172,6 +177,31 @@ body {
             position: absolute;
             // width/height/position in RWD
           }
+        }
+      }
+
+      // scroll down
+      .scrollDownContainer {
+        pointer-events: none;
+        .scrollDown {
+          position: absolute;
+          bottom: -3%;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 3rem;
+          margin-bottom: 1rem;
+        }
+        .arrow2 {
+          position: absolute;
+          bottom: 5%;
+          left: 32%;
+        }
+        .arrow1,
+        .arrow2 {
+          animation: arrowMove 1s linear 0s infinite;
         }
       }
     }
@@ -199,7 +229,30 @@ body {
   }
 }
 
-// Animation
+// Animation: 進場
+@keyframes incomingLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes incomingRight {
+  0% {
+    opacity: 0;
+    transform: translateX(5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+// Animation: gelatine
 @keyframes gelatine {
   from {
     transform: scale(1, 1);
@@ -216,6 +269,16 @@ body {
   }
   to {
     transform: scale(1, 1);
+  }
+}
+
+// Animation: arrow
+@keyframes arrowMove {
+  0% {
+    transform: translateY(-30%) scaleX(3);
+  }
+  100% {
+    transform: translateY(-20%) scaleX(3);
   }
 }
 
@@ -240,12 +303,16 @@ body {
       }
     }
   }
+
+  .scrollDownContainer {
+    display: none;
+  }
 }
 
 // RWD Home
 @media screen and (max-width: 776px) {
   .homeLeft {
-    height: 70vh;
+    height: 0vh;
   }
   .homeRight {
     height: 60vh;
