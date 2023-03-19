@@ -188,13 +188,13 @@ body main #ContactMe {
   header ul {
     width: 100%;
     flex-direction: column;
-    top: calc(var(--navHeight) * 1.1);
+    top: calc(var(--navHeight) * 1.01);
     left: 0;
   }
   header ul li {
     width: 100%;
     line-height: 2.5rem;
-    background: #725a7a;
+    background: #ff7582;
   }
 }
 @media screen and (max-width: 776px) {

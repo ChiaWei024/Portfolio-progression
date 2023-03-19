@@ -66,6 +66,7 @@ if (window.innerWidth <= 800) {
   }
 }
 // resize chk
+let eventAdded = false;
 addEventListener("resize", () => {
   if (window.innerWidth <= 800) {
     if (!navAnchor.classList.contains("flagCollaspe")) {
@@ -78,7 +79,15 @@ addEventListener("resize", () => {
       // update
       ulHeight = window.getComputedStyle(navAnchor).height;
     }
-    // remove nav underline effect
+    //
+    if (!eventAdded) {
+      eventAdded = true;
+      // add event
+      // nav collaspe on achor click *only when innerWidth <= 800px*
+      navAnchor.querySelectorAll("li").forEach((list) => {
+        list.querySelector("a").addEventListener("click", navCollaspe);
+      });
+    }
   } else {
     if (navAnchor.classList.contains("flagCollaspe")) {
       navAnchor.style.display = "flex";
@@ -90,6 +99,14 @@ addEventListener("resize", () => {
       //update
       ulHeight = window.getComputedStyle(navAnchor).height;
     }
+    //
+    // remove collaspe event when innerWidth > 800px
+    if (eventAdded) {
+      eventAdded = false;
+      navAnchor.querySelectorAll("li").forEach((list) => {
+        list.querySelector("a").removeEventListener("click", navCollaspe);
+      });
+    }
   }
 });
 
@@ -97,11 +114,11 @@ addEventListener("resize", () => {
 let menu = document.querySelector(".material-symbols-outlined");
 menu.addEventListener("click", navCollaspe);
 
-// nav collaspe on achor click
-navAnchor.querySelectorAll("li").forEach((list) => {
-  list.querySelector("a").addEventListener("click", navCollaspe);
-});
-// nac collaspe function
+// // nav collaspe on achor click *only when innerWidth <= 800px*
+// navAnchor.querySelectorAll("li").forEach((list) => {
+//   list.querySelector("a").addEventListener("click", navCollaspe);
+// });
+// naV collaspe function
 function navCollaspe() {
   if (navAnchor.classList.contains("flagCollaspe")) {
     navAnchor.style.display = "flex";

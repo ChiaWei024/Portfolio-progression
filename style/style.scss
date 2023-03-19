@@ -231,12 +231,12 @@ body {
     ul {
       width: 100%;
       flex-direction: column;
-      top: calc(var(--navHeight) * 1.1);
+      top: calc(var(--navHeight) * 1.01);
       left: 0;
       li {
         width: 100%;
         line-height: 2.5rem;
-        background: $themeColor1;
+        background: $emphasisColor;
       }
     }
   }
