@@ -2,11 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 // Theme colors
-$themeColor1: #8c1c85;
-$themeColor2: #580e59;
-$themeColor3: #f8ebfc;
-$themeColor4: #881ba6;
-$themeColor5: #331e4e;
+// $themeColor1: #8c1c85;
+// $themeColor2: #580e59;
+// $MainthemeColor: #331e4e;
+
+$MainthemeColor: #335878;
+$themeColor1: #725a7a;
+$themeColor2: #c56c86;
+$emphasisColor: #ff7582;
+
 $fontColor: white;
 
 // root variables
@@ -23,20 +27,20 @@ $fontColor: white;
 }
 
 body {
-  background: $themeColor5;
+  background: $MainthemeColor;
   color: $fontColor;
-  position: relative;
 
   header {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 10;
     nav {
       width: 100%;
       height: var(--navHeight);
       background: $themeColor2;
-      box-shadow: 1px 1px 5px black;
+      box-shadow: 1px 1px 5px rgb(0, 0, 0);
       display: flex;
       align-items: center;
 
@@ -71,7 +75,6 @@ body {
       transform: translate(0%, 135%);
       li {
         list-style: none;
-        // margin: 0rem 1.5rem;
         padding: 0rem 1.5rem;
         display: flex;
         flex-direction: column;
@@ -81,52 +84,138 @@ body {
           font-size: 1.1rem;
           color: $fontColor;
           text-decoration: none;
-          transition: all 0.2s ease;
-
-          &:hover {
-            color: rgb(226, 136, 222);
-          }
+          transition: all 0.1s ease;
         }
-
-        // &.active:hover {
-        //   transform: translateY(-15%);
-        // }
       }
     }
   }
 
   main {
+    display: flex;
+    flex-wrap: wrap;
+
     #Home {
-      border: 1px solid black;
       width: 100%;
-      height: 100vh;
-      background: #331e4e;
+      background: MainthemeColor;
       color: white;
+      display: flex;
+      flex-wrap: wrap-reverse;
+
+      .homeLeft,
+      .homeRight {
+        border: 1px solid red;
+      }
+      .homeLeft {
+        flex-grow: 1.6;
+        min-width: 380px;
+        position: relative;
+
+        .homeLeftContent {
+          width: 90%;
+          border: 1px solid black;
+          padding: 1rem;
+          position: absolute;
+          top: 50%;
+          left: 10%;
+          transform: translate(-5%, -50%);
+
+          h1 {
+            font-size: 3rem;
+            font-weight: 100;
+            letter-spacing: 0.1rem;
+            border: 1px solid black;
+          }
+          p {
+            font-size: 1.25rem;
+            margin-top: 0.75rem;
+            border: 1px solid black;
+          }
+
+          ul {
+            width: 30%;
+            border: 1px solid black;
+            list-style: none;
+            display: flex;
+            margin-top: 0.75rem;
+            li {
+              margin: 0rem 0.25rem;
+
+              &:hover {
+                animation: gelatine 0.5s linear;
+              }
+
+              a {
+                text-decoration: none;
+                color: white;
+                .socialIcon {
+                  font-size: 1.75rem;
+                }
+              }
+            }
+          }
+        }
+      }
+      .homeRight {
+        flex-grow: 1;
+        min-width: 380px;
+        position: relative;
+
+        .homeRightContent {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          overflow: hidden;
+
+          .myPhoto {
+            position: absolute;
+            // width/height/position in RWD
+          }
+        }
+      }
     }
 
     #Projects {
       border: 1px solid black;
       width: 100%;
-      height: 25%;
-      background: #331e4e;
+      background: $MainthemeColor;
       color: white;
     }
 
     #AboutMe {
       border: 1px solid black;
       width: 100%;
-      height: 25%;
-      background: #331e4e;
+      background: $MainthemeColor;
       color: white;
     }
 
     #ContactMe {
       border: 1px solid black;
       width: 100%;
-      height: 25%;
-      background: #331e4e;
+      background: $MainthemeColor;
       color: white;
     }
+  }
+}
+
+// Animation
+@keyframes gelatine {
+  from {
+    transform: scale(1, 1);
+  }
+
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+  to {
+    transform: scale(1, 1);
   }
 }
 
@@ -150,5 +239,36 @@ body {
         background: $themeColor1;
       }
     }
+  }
+}
+
+// RWD Home
+@media screen and (max-width: 776px) {
+  .homeLeft {
+    height: 70vh;
+  }
+  .homeRight {
+    height: 60vh;
+  }
+  .myPhoto {
+    width: 35vw;
+    min-width: 230px;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media not screen and (max-width: 776px) {
+  .homeRight,
+  .homeLeft {
+    height: 100vh;
+  }
+  .myPhoto {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28vw;
+    min-width: 107px;
   }
 }
